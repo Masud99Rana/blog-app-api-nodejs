@@ -1,0 +1,7 @@
+## Backend packages
+===================
+-> npm i nodemon morgan --save-dev
+-> npm i express dotenv http-errors
+-> npm i mongoose jsonwebtoken bcryptjs 
+
+-> npm i multer cloudinary multer-storage-cloudinary

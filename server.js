@@ -1,12 +1,13 @@
 // => external import
 const express = require("express");
-
+const dotenv = require('dotenv');
+const morgan = require('morgan');
 
 // => internal import
+const connectDB = require('./config/db');
 
 
 // => middleware import
-
 const {
   notFoundHandler,
   errorHandler,
@@ -26,11 +27,19 @@ process.on("uncaughtException", (err) => {
 });
 
 
+// => load env vars
+// dotenv.config({ path: './config/config.env' });
+dotenv.config()
+
+
+// => config app
 const app = express();
 
 
-// => db connect
 
+
+// => db connect - Connect to database
+connectDB();
 
 
 // => middleware
@@ -38,6 +47,11 @@ const app = express();
 // request parsers - pass incoming payload
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
+// dev logging middleware
+if (process.env.NODE_ENV === 'development') {
+  app.use(morgan('dev'));
+}
 
 
 // test middleware
@@ -57,8 +71,6 @@ app.get("/api/v1/ping", (req, res) =>{
 });
 
 
-// 
-
 
 // handling unhandled routes - 404 not found handler
 app.use(notFoundHandler);
@@ -69,10 +81,8 @@ app.use(notFoundHandler);
 //   });
 // });
 
-
 // common error handler
 app.use(errorHandler);
-
 
 
 //Listen to server
