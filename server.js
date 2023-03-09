@@ -14,7 +14,7 @@ const {
 
 
 // => route import
-
+const userRouter = require('./routes/userRoutes');
 
 
 // Catching Uncaught Exceptions
@@ -66,6 +66,9 @@ app.get("/api/v1/ping", (req, res) =>{
     message: `Welcome to Blog API - Masud Rana`
   });
 });
+
+//users route
+app.use("/api/v1/users/", userRouter);
 
 
 // => error handlers middleware
