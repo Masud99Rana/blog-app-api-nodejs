@@ -1,11 +1,10 @@
 // => external import
 const express = require("express");
-const dotenv = require('dotenv');
+require('dotenv').config();
 const morgan = require('morgan');
 
 // => internal import
 const connectDB = require('./config/db');
-
 
 // => middleware import
 const {
@@ -29,13 +28,11 @@ process.on("uncaughtException", (err) => {
 
 // => load env vars
 // dotenv.config({ path: './config/config.env' });
-dotenv.config()
+// dotenv.config()
 
 
-// => config app
+// => express app
 const app = express();
-
-
 
 
 // => db connect - Connect to database
@@ -63,7 +60,7 @@ app.use((req, res, next) => {
 
 
 
-// => routing setup
+// => routes - routing setup
 app.get("/api/v1/ping", (req, res) =>{
   res.status(200).json({
     message: `Welcome to Blog API - Masud Rana`
@@ -71,7 +68,7 @@ app.get("/api/v1/ping", (req, res) =>{
 });
 
 
-
+// => error handlers middleware
 // handling unhandled routes - 404 not found handler
 app.use(notFoundHandler);
 // app.use("*", (req, res) => {
