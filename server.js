@@ -16,6 +16,7 @@ const {
 // => route import
 const userRouter = require('./routes/userRoutes');
 const categoryRouter = require('./routes/categoryRoutes');
+const postRouter = require("./routes/postRoutes");
 
 
 // Catching Uncaught Exceptions
@@ -72,7 +73,8 @@ app.get("/api/v1/ping", (req, res) =>{
 app.use("/api/v1/users/", userRouter);
 //categories route
 app.use("/api/v1/categories", categoryRouter);
-
+//posts route
+app.use("/api/v1/posts", postRouter);
 
 // => error handlers middleware
 // handling unhandled routes - 404 not found handler
