@@ -17,6 +17,7 @@ const {
 const userRouter = require('./routes/userRoutes');
 const categoryRouter = require('./routes/categoryRoutes');
 const postRouter = require("./routes/postRoutes");
+const commentRouter = require("./routes/commentRoutes");
 
 
 // Catching Uncaught Exceptions
@@ -75,6 +76,8 @@ app.use("/api/v1/users/", userRouter);
 app.use("/api/v1/categories", categoryRouter);
 //posts route
 app.use("/api/v1/posts", postRouter);
+//comments route
+app.use("/api/v1/comments", commentRouter);
 
 // => error handlers middleware
 // handling unhandled routes - 404 not found handler
