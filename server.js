@@ -15,6 +15,7 @@ const {
 
 // => route import
 const userRouter = require('./routes/userRoutes');
+const categoryRouter = require('./routes/categoryRoutes');
 
 
 // Catching Uncaught Exceptions
@@ -69,6 +70,8 @@ app.get("/api/v1/ping", (req, res) =>{
 
 //users route
 app.use("/api/v1/users/", userRouter);
+//categories route
+app.use("/api/v1/categories", categoryRouter);
 
 
 // => error handlers middleware
