@@ -64,6 +64,15 @@ app.use((req, res, next) => {
 
 
 // => routes - routing setup
+
+// home route
+app.get("/", (req, res) =>{
+  res.status(200).json({
+    message: `Welcome to Blog API - Masud Rana`
+  });
+});
+
+// ping route
 app.get("/api/v1/ping", (req, res) =>{
   res.status(200).json({
     message: `Welcome to Blog API - Masud Rana`
