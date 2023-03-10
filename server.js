@@ -42,7 +42,8 @@ const app = express();
 connectDB();
 
 
-// => middleware
+
+// => Init Middleware
 
 // request parsers - pass incoming payload
 app.use(express.json());
@@ -54,6 +55,8 @@ if (process.env.NODE_ENV === 'development') {
 }
 
 
+// => middleware
+
 // test middleware
 app.use((req, res, next) => {
   req.requestTime = new Date().toISOString();
@@ -63,7 +66,7 @@ app.use((req, res, next) => {
 
 
 
-// => routes - routing setup
+// => mount routes - define routes
 
 // home route
 app.get("/", (req, res) =>{
